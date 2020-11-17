@@ -31,89 +31,54 @@ $DateNTime = Get-Date -Format "dddd MM/dd/yyyy HH:mm"       # call up and assign
 $CompName = $Env:ComputerName                               # call up the computer name separately from the environment variables
 
  
-#Adapt this script by using your own username and first name.
+                                  #Adapt this script by using your own username and first name.
 
 
 
  
-if ( $User1 -eq "aholland" ) {                        # If $User1 is equal to (or the same as) my username, then change $User1 to my name and greet me.  
-     $User1 = "Asha"        
+if ( $User1 -eq "aholland" ) {                                    # If the $User1 is equal to my username, then change $User1 to my first name and greet me
+                                                                  # For ease of reading, let's display Black text on a Blue background
+    $User1 = "Asha"        
+    Write-Host "Greetings, $User1! " -ForegroundColor Black -BackgroundColor Blue                   
+    Write-Host "You have logged in at: $DateNTime. " -ForegroundColor Black -BackgroundColor Blue                     # Display the current Date and Time details
+    Write-Host "You are logged into the computer named: $CompName  "  -ForegroundColor Black -BackgroundColor Blue    # Display the name of the computer being used
+  }                                                                                   
 
-    Write-Host "Greetings, $User1! " -ForegroundColor Black -BackgroundColor Blue             #Then greet 
+   
 
-    Write-Host "You have logged in at: $DateNTime. " -ForegroundColor Black -BackgroundColor Blue
-
-    Write-Host "You are logged into the computer named: $CompName  "  -ForegroundColor Black -BackgroundColor Blue
-
-    }
-
- 
-
- elseif ( $User1 -ne "anholland" && $User1 -ne "" ) {
-
+ elseif ( $User1 -ne "anholland" && $User1 -ne "" ) {              # If the $User1 is both not equal to either my username, but is not a empty string, 
+                                                                   # then $User1 retains its value of a different user's username, and that user s greeted
    $User1 = $User1
-
    Write-Host "Greetings, $User1! " -ForegroundColor Black -BackgroundColor Blue
-
    Write-Host "You have logged in at: $DateNTime. " -ForegroundColor Black -BackgroundColor Blue
-
    Write-Host "You are logged into the computer named: $CompName  "  -ForegroundColor Black -BackgroundColor Blue
 
  }
 
- 
-
-   else { 
-
+                                                                          # If the username is an empty string (which cannot be the case) 
+                                                                          # Tell the user they are not authorized, wait 3 seconds; the exit PowerShell.
+else {      
         Write-Host "User is unauthorized. Closing session..."
-
         Start-Sleep 3 
-
         exit 
+    } 
 
-    }
 
- 
-
-$clearScreen = Read-Host -Prompt "Do you want to clear the screen? [y]es or [n]o ?"
-
- 
+$clearScreen = Read-Host -Prompt "Do you want to clear the screen? [y]es or [n]o ?"            # Prompt the user with the option to clear the console, 
+                                                                                               # so that it doesn't look cluttered. 
+                                                                                               # Either way, let's now use Blue text on a White background
+                                                                                               # Inform the user that they may begin scripting
 
         if ($clearScreen -eq "y") {
-
             Write-Host "Clearing the screen. You may begin scripting..." -ForegroundColor Blue -BackgroundColor White
-
             Start-Sleep 2
-
             Clear-Host
-
         }
 
- 
-
       else   {
-
         Write-Host "You may begin scripting..."  -ForegroundColor Blue -BackgroundColor White
-
         Write-Host " :) "
-
       }
 
- 
-
-# greet user with name, date and time of logon, and a smiley face.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# The user has now been greeted by name/username and a smiley face, and been informed of the current date and time.
 
